@@ -7,7 +7,7 @@ public class GameHistory {
     private final List<String> history = new ArrayList<>();
 
     public void print() {
-        if (history.size() >= 5) {
+        if (history.size() > 5) {
             history.removeFirst();
         }
         System.out.println("\n========== ÚLTIMAS PARTIDAS ==========");

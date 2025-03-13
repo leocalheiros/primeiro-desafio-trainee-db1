@@ -6,8 +6,6 @@ public class Player {
     private String name;
     private int numWins;
 
-    public Player() {}
-
     public String getName() {
         return name;
     }

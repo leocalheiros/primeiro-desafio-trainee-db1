@@ -9,8 +9,6 @@ public class Game {
     private final GameHistory gameHistory = new GameHistory();
     private String option = "";
 
-    public Game(){}
-
     public void round() {
         Move move1 = player1.makeMove();
         Move move2 = player2.makeMove();

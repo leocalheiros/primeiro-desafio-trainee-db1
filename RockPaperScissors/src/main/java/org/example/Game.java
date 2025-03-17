@@ -12,17 +12,24 @@ public class Game {
     public void round() {
         Move move1 = player1.makeMove();
         Move move2 = player2.makeMove();
-        String winner;
+        boolean hasPlayer1Won = move1.beats(move2);
+        boolean hasPlayer2Won = move2.beats(move1);
+        boolean hasTied = !hasPlayer2Won && !hasPlayer1Won;
+        String winner = "";
 
-        if (move1.beats(move2)) {
+        if (hasPlayer1Won) {
             System.out.println(player1.getName() + " ganhou");
             player1.addNumWins();
             winner = player1.getName();
-        } else if (move2.beats(move1)) {
+        }
+
+        if (hasPlayer2Won) {
             System.out.println(player2.getName() + " ganhou");
             player2.addNumWins();
             winner = player2.getName();
-        } else {
+        }
+
+        if (hasTied) {
             System.out.println("Empate");
             winner = "EMPATE";
         }

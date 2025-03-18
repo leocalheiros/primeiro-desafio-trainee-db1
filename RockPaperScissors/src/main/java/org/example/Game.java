@@ -7,7 +7,19 @@ public class Game {
     private final Player player2 = new Player();
     private final Scanner scanner = new Scanner(System.in);
     private final GameHistory gameHistory = new GameHistory();
-    private String option = "";
+
+    public boolean checkOption() {
+        String option;
+        while (true) {
+            System.out.print("\nDeseja jogar novamente? (s/n): ");
+            option = scanner.nextLine().toLowerCase();
+            if (option.equals("s")) return true;
+            if (option.equals("n")) return false;
+
+            System.out.println("Opção inválida: " + option);
+        }
+
+    }
 
     public void round() {
         Move move1 = player1.makeMove();
@@ -45,17 +57,10 @@ public class Game {
         player1.setName(scanner.nextLine());
         System.out.print("Jogador 2, digite seu nome: ");
         player2.setName(scanner.nextLine());
-        round();
 
-        while (!option.equals("n")) {
-            System.out.print("\nDeseja jogar novamente? (s/n): ");
-            option = scanner.nextLine().toLowerCase();
-            if (!option.equals("s") && !option.equals("n")) {
-                System.out.println("Opção inválida: " + option);
-            } else if (option.equals("s")) {
-                round();
-            }
-        }
+        do {
+            round();
+        } while (checkOption());
 
         gameHistory.print();
     }

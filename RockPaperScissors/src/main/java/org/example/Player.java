@@ -24,17 +24,15 @@ public class Player {
 
     public Move makeMove() {
         String move;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(this.name + " joga: ");
+        move = scanner.next().toUpperCase();
 
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print(this.name + " joga: ");
-            move = scanner.next().toUpperCase();
-
-            try {
-                return Move.valueOf(move);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Movimento inválido: " + move);
-            }
+        try {
+            return Move.valueOf(move);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Movimento inválido: " + move);
+            return makeMove();
         }
     }
 }
